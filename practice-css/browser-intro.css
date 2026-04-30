@@ -3,25 +3,47 @@ p {
 }
 
 p.info {
-	font-size: 10pt;
+	font-size: small;
+	background-color: #dfdfdf;
 }
 
 h1 {
-	background-color: #7f7fcf;
+	color: white;
+	background-color: white;
+	text-shadow: 1px 1px 10px navy;
 }
 
 h2 {
-	border: solid 1px black;
 	margin: 5px;
+	font-family: cursive;
+	color: #3f3faf;
+	background: linear-gradient(to right,white,#ffefaf);
 }
 
 div#zentai {
-	display: flex;
-	flex-direction: row;
+	display: grid; 
+	grid-auto-rows: 200px 200px; 
+	flex-direction: row; 
 	width: 1024px;
+	grid-template-columns: 1fr 1fr;
+	padding: 5px;
 }
 
 div#zentai > div {
-	margin-left: 5px;
+	margin: 5px 5px 5px 5px;
 	background-color: #ffefaf;
+}
+p.target {
+    border: 5px solid blue;
+    padding: 30px;
+    margin: 50px;
+    width: 200px;
+    height: 150px;
+    background: orange;
+}
+img{
+	float: right;
+	width: 100px;
+    height: 100px;
+    margin: 10px 0 10px 10px;
 }
