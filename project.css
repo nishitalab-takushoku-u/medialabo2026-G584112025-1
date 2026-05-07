@@ -1,0 +1,39 @@
+html {
+  background-color: white;
+}
+
+body {
+  font: 1.2em / 1.5 system-ui;
+  padding: 20px;
+  width: 500px;
+  background-color: #efefef;
+  margin: 0 auto;
+}
+h1 {
+  text-shadow:
+    1px 1px 1px red,
+    2px 2px 1px white;
+}
+
+h2 {
+    color: blue;
+  font-style: italic;
+  font-size: 1.5rem;
+  border-bottom: 3px dotted orange;
+  width: 35%;
+}
+h3{
+    color: red;
+	margin: 5px;
+	color: #3eff0e;
+	background: linear-gradient(to right,rgb(227, 118, 118),#edc525);
+}
+ul {
+  background-color: white;
+  border: 5px solid purple;
+  padding: 30px;
+  border-radius: 20px;
+}
+li{
+    color: green;
+}
