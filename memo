@@ -1,0 +1,50 @@
+let l = document.createElement('li');
+undefined
+
+l.textContent = 'ヨット';
+"ヨット"
+
+let u = document.querySelector('ul#kazoeuta');
+undefined
+
+u
+<ul id="kazoeuta">
+
+l
+<li>
+
+u.insertAdjacentElement('beforeend', l);
+<li>
+
+let i = document.querySelector('img#bluemoon');
+undefined
+
+i
+<img id="bluemoon">
+
+i.setAttribute('src','bluemoon.jpg');
+undefined
+
+let a = document.createElement('a');
+undefined
+
+a.textContent = '拓殖大学HP';
+"拓殖大学HP"
+
+a.setAttribute('href','https://www.takushoku-u.ac.jp');
+undefined
+
+let p = document.querySelector('p#takudai');
+undefined
+
+p
+<p id="takudai">
+
+p.insertAdjacentElement('afterend',u);
+<ul id="kazoeuta">
+
+p.insertAdjacentElement('afterend',a);
+<a href="https://www.takushoku-u.ac.jp">
+
+​
+
