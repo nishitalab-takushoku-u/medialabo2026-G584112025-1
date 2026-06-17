@@ -15,6 +15,10 @@ function print(data) {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  let oldResult = document.querySelector('#result');
+  if (oldResult) {
+    oldResult.remove();
+  }
   let d = document.createElement('div');
   d.setAttribute('id','result');
   let b = document.querySelector('body');

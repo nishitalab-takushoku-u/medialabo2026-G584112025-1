@@ -7,6 +7,7 @@ console.log('答え（デバッグ用）: ' + kotae);
  
 // 入力回数（予想回数）
 let kaisu = 0;
+let isCorrected = false;
  
 // そのほか，必要に応じて変数を宣言してもよい
  
@@ -25,33 +26,34 @@ function hantei() {
  
   yoso = document.querySelector('input#number');
   let think = Number(yoso.value);
-  print = document.querySelector('span#yoso');
-  print.textContent = think;
+  
+  let printYoso = document.querySelector('span#yoso');
+  if (printYoso) {
+    printYoso.textContent = think;
+  }
   // ここまで: テキストボックスに指定された数値を yoso に代入する
  
   // ここから: 正解判定する
   let result = document.querySelector('p#result');
-  if ( kaisu === 3 ){
-    result.textContent = "間違い．残念でした答えは"+ kotae +"です．";
+  if (kaisu >= 4 || isCorrected) {
+    result.textContent = "答えは " + kotae + " でした．すでにゲームは終わっています";
   }
   
-  // 　　　　  正解/不正解のときのメッセージを表示する
-  else if (kaisu < 3){
-    if(think === kotae){
-      result.textContent = "正解です．おめでとう!";
-    } else {
-      if(think > kotae){
-        result.textContent = "間違い．答えはもっと小さいですよ";
-      } else{ 
-        result.textContent = "間違い．答えはもっと大きいですよ";
-      }   
-    }
-  } else if (kaisu > 3){
-    result.textContent = "答えは " + kotae +"でした．すでにゲームは終わっています";
+  else if (think === kotae) {
+    result.textContent = "正解です．おめでとう!";
+    isCorrected = true; 
   }
-  // ここまで: 正解判定する
+  
+  else {
+    if (kaisu === 3) {
+      result.textContent = "まちがい．残念でした答えは " + kotae + " です．";
+    } else if (think < kotae) {
+      result.textContent = "まちがい．答えはもっと大きいですよ";
+    } else if (think > kotae) {
+      result.textContent = "まちがい．答えはもっと小さいですよ";
+    }
+  }
 }
- 
 // ここから: ボタンを押した時のイベントハンドラとして hantei を登録
 let b = document.querySelector('button#print');
 b.addEventListener('click', hantei) ;
