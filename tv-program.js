@@ -19,72 +19,68 @@ function printDom(data) {
   if (oldResult) {
     oldResult.remove();
   }
+  
   let d = document.createElement('div');
   d.setAttribute('id','result');
   let b = document.querySelector('body');
   b.insertAdjacentElement('beforeend',d);
   let r = document.querySelector('div#result');
 
-let mainTitle = document.createElement('h1');
-mainTitle.textContent = '番組表の検索結果';
-r.insertAdjacentElement('afterend', mainTitle);
+  let mainTitle = document.createElement('h1');
+  mainTitle.textContent = '番組表の検索結果';
+  r.insertAdjacentElement('beforeend', mainTitle);
 
-let countTitle = document.createElement('h3');
+  let countTitle = document.createElement('h3');
 
-let programList;
-let channelName = '';
-if (data.list.g1) {
-  programList = data.list.g1;
-  channelName = 'NHK総合１';
-} else if (data.list.e1) {
-  programList = data.list.e1;
-  channelName = 'ＮＨＫＥテレ１';
+  let programList;
+  let channelName = '';
+  if (data.list.g1) {
+    programList = data.list.g1;
+    channelName = 'NHK総合１';
+  } else if (data.list.e1) {
+    programList = data.list.e1;
+    channelName = 'ＮＨＫＥテレ１';
+  }
+  countTitle.textContent = channelName + 'の番組表（検索結果は' + programList.length + '件）';
+  r.insertAdjacentElement('beforeend', countTitle);
+
+  for (let i = 0; i < programList.length; i++) {
+    let program = programList[i];
+    let index = i + 1; 
+
+    let h2 = document.createElement('h2');
+    h2.textContent = '検索結果' + index + '件目';
+    r.insertAdjacentElement('beforeend', h2);
+
+    let ul = document.createElement('ul');
+
+    let liStart = document.createElement('li');
+    liStart.textContent = '開始時刻：' + program.start_time;
+    ul.insertAdjacentElement('beforeend', liStart);
+
+    let liEnd = document.createElement('li');
+    liEnd.textContent = '終了時刻：' + program.end_time;
+    ul.insertAdjacentElement('beforeend', liEnd);
+
+    let liTitle = document.createElement('li');
+    liTitle.textContent = 'タイトル：' + program.title;
+    ul.insertAdjacentElement('beforeend', liTitle);
+
+    let liSub = document.createElement('li');
+    liSub.textContent = 'サブタイトル：' + program.subtitle;
+    ul.insertAdjacentElement('beforeend', liSub);
+
+    let liContent = document.createElement('li');
+    liContent.textContent = '番組説明：' + program.content;
+    ul.insertAdjacentElement('beforeend', liContent);
+
+    let liAct = document.createElement('li');
+    liAct.textContent = '出演者：' + (program.act ? program.act : '');
+    ul.insertAdjacentElement('beforeend', liAct);
+
+    r.insertAdjacentElement('beforeend', ul);
+  }
 }
-countTitle.textContent = channelName + 'の番組表（検索結果は' + programList.length + '件）';
-mainTitle.insertAdjacentElement('afterend', countTitle);
-
-let lastElement = countTitle;
-
-for (let i = 0; i < programList.length; i++) {
-  let program = programList[i];
-  let index = i + 1; 
-
-  let h2 = document.createElement('h2');
-  h2.textContent = '検索結果' + index + '件目';
-  lastElement.insertAdjacentElement('afterend', h2);
-  lastElement = h2;
-
-  let ul = document.createElement('ul');
-
-  let liStart = document.createElement('li');
-  liStart.textContent = '開始時刻：' + program.start_time;
-  ul.insertAdjacentElement('beforeend', liStart);
-
-  let liEnd = document.createElement('li');
-  liEnd.textContent = '終了時刻：' + program.end_time;
-  ul.insertAdjacentElement('beforeend', liEnd);
-
-  let liTitle = document.createElement('li');
-  liTitle.textContent = 'タイトル：' + program.title;
-  ul.insertAdjacentElement('beforeend', liTitle);
-
-  let liSub = document.createElement('li');
-  liSub.textContent = 'サブタイトル：' + program.subtitle;
-  ul.insertAdjacentElement('beforeend', liSub);
-
-  let liContent = document.createElement('li');
-  liContent.textContent = '番組説明：' + program.content;
-  ul.insertAdjacentElement('beforeend', liContent);
-
-  let liAct = document.createElement('li');
-  liAct.textContent = '出演者：' ;
-  ul.insertAdjacentElement('beforeend', liAct);
-
-  lastElement.insertAdjacentElement('afterend', ul);
-  lastElement = ul; 
-}
-}
-
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
 let b = document.querySelector('#sendRequest');
