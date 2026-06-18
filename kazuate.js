@@ -35,6 +35,7 @@ function hantei() {
  
   // ここから: 正解判定する
   let result = document.querySelector('p#result');
+  
   if (kaisu >= 4 || isCorrected) {
     result.textContent = "答えは " + kotae + " でした．すでにゲームは終わっています";
   }

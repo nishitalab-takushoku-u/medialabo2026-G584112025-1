@@ -88,6 +88,7 @@ b.addEventListener('click', sendRequest);
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+  
   let j = document.querySelector('input[name="service"]');
   let service= j.value;
 
